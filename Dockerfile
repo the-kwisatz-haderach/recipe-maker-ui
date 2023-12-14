@@ -1,5 +1,5 @@
+# syntax=docker/dockerfile:1
 FROM node:20-alpine AS base
-#FROM node:20-alpine AS base
 
 # Install dependencies only when needed
 FROM base AS deps
@@ -24,6 +24,9 @@ COPY . .
 RUN npm run build
 
 FROM base AS runner
+
+RUN apk --no-cache add curl
+
 WORKDIR /app
 
 ENV NODE_ENV production
@@ -49,8 +52,14 @@ USER nextjs
 EXPOSE 3000
 
 ENV PORT 3000
+
+ARG API_HOST
+ENV API_HOST = ${API_HOST}
 # set hostname to localhost
 ENV HOSTNAME "0.0.0.0"
+
+HEALTHCHECK --interval=30s --timeout=3s --start-interval=5s \
+  CMD curl -f http://localhost:3000/api/health || exit 1
 
 # server.js is created by next build from the standalone output
 # https://nextjs.org/docs/pages/api-reference/next-config-js/output
