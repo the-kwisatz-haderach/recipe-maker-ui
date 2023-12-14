@@ -25,8 +25,6 @@ RUN npm run build
 
 FROM base AS runner
 
-RUN apk --no-cache add curl
-
 WORKDIR /app
 
 ENV NODE_ENV production
@@ -46,6 +44,7 @@ RUN chown nextjs:nodejs .next
 # https://nextjs.org/docs/advanced-features/output-file-tracing
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+COPY --from=builder --chown=nextjs:nodejs /app/health.js ./health.js
 
 USER nextjs
 
@@ -59,7 +58,7 @@ ENV API_HOST = ${API_HOST}
 ENV HOSTNAME "0.0.0.0"
 
 HEALTHCHECK --interval=30s --timeout=3s --start-interval=5s \
-  CMD curl -f http://localhost:3000/api/health || exit 1
+  CMD node health.js || exit 1
 
 # server.js is created by next build from the standalone output
 # https://nextjs.org/docs/pages/api-reference/next-config-js/output
