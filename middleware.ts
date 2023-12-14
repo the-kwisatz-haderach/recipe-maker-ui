@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
 export function middleware(req: NextRequest) {
-  if (!/(\..+)$/.test(req.url) && !req.url.endsWith('/health')) {
+  if (!/(\..+|health|signup)$/.test(req.url)) {
     const cookie = req.cookies.get('session-cookie')
     if (!cookie?.value && !req.url.includes('/login')) {
       const url = new URL(req.url)
