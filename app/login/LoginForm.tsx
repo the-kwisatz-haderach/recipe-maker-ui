@@ -44,7 +44,7 @@ export default function LoginForm() {
                 id="username"
                 name="username"
                 type="text"
-                //autoComplete="email"
+                autoComplete="username"
                 required
               />
             </div>

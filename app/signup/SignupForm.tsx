@@ -55,31 +55,16 @@ export default function SignupForm() {
           <div>
             <Label htmlFor="username">Username</Label>
             <div className="mt-2">
-              <Input
-                id="username"
-                name="username"
-                type="text"
-                //autoComplete="email"
-                required
-              />
+              <Input id="username" name="username" type="text" required />
             </div>
           </div>
 
           <div>
             <div className="flex items-center justify-between">
               <Label htmlFor="password">Password</Label>
-              {/* <div className="text-sm">
-                <Link href="#">Forgot password?</Link>
-              </div> */}
             </div>
             <div className="mt-2">
-              <Input
-                id="password"
-                name="password"
-                type="password"
-                autoComplete="current-password"
-                required
-              />
+              <Input id="password" name="password" type="password" required />
             </div>
           </div>
 
