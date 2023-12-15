@@ -12,9 +12,6 @@ html {
 }
 
 body {
-  @apply h-full bg-lime-950 p-2;
+  @apply h-full bg-neutral-100 p-2;
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
