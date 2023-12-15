@@ -2,7 +2,11 @@
 
 import { useRouter } from 'next/navigation'
 import { FormEventHandler } from 'react'
-import styles from './LoginForm.module.css'
+import Button from '@/components/Button/Button'
+import Input from '@/components/Form/Input/Input'
+import Label from '@/components/Form/Label/Label'
+import Heading from '@/components/Heading/Heading'
+import Link from '@/components/Link/Link'
 
 export default function LoginForm() {
   const { replace } = useRouter()
@@ -26,12 +30,53 @@ export default function LoginForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} className={styles.form}>
-      <label htmlFor="username">Username</label>
-      <input id="username" type="text" />
-      <label htmlFor="password">Password</label>
-      <input id="password" type="password" />
-      <button type="submit">Login</button>
-    </form>
+    <>
+      <Heading tag="h2" className="mt-10 text-center">
+        Sign in to your account
+      </Heading>
+
+      <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+        <form onSubmit={onSubmit} className="space-y-6">
+          <div>
+            <Label htmlFor="username">Username</Label>
+            <div className="mt-2">
+              <Input
+                id="username"
+                name="username"
+                type="text"
+                //autoComplete="email"
+                required
+              />
+            </div>
+          </div>
+
+          <div>
+            <div className="flex items-center justify-between">
+              <Label htmlFor="password">Password</Label>
+              <div className="text-sm">
+                <Link href="#">Forgot password?</Link>
+              </div>
+            </div>
+            <div className="mt-2">
+              <Input
+                id="password"
+                name="password"
+                type="password"
+                autoComplete="current-password"
+                required
+              />
+            </div>
+          </div>
+
+          <div>
+            <Button type="submit">Sign in</Button>
+          </div>
+        </form>
+
+        <p className="mt-10 text-center text-sm text-gray-500">
+          Don&apos;t have an account? <Link href="/signup">Sign up here</Link>
+        </p>
+      </div>
+    </>
   )
 }

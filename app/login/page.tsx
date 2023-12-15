@@ -1,13 +1,9 @@
 import LoginForm from './LoginForm'
-import styles from './styles.module.css'
 
 export default async function Page() {
   return (
-    <div>
+    <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
       <LoginForm />
-      <a className={styles.signupLink} href="/signup">
-        or create a new account
-      </a>
     </div>
   )
 }
