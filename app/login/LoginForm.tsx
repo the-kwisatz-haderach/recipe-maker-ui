@@ -36,7 +36,7 @@ export default function LoginForm() {
       </Heading>
 
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <form onSubmit={onSubmit} className="space-y-6">
+        <form onSubmit={onSubmit} className="space-y-4">
           <div>
             <Label htmlFor="username">Username</Label>
             <div className="mt-2">
