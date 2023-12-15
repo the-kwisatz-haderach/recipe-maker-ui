@@ -53,9 +53,9 @@ export default function LoginForm() {
           <div>
             <div className="flex items-center justify-between">
               <Label htmlFor="password">Password</Label>
-              <div className="text-sm">
+              {/* <div className="text-sm">
                 <Link href="#">Forgot password?</Link>
-              </div>
+              </div> */}
             </div>
             <div className="mt-2">
               <Input

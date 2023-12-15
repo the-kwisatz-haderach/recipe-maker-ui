@@ -11,7 +11,7 @@ export default function Label({ children, htmlFor, className }: Props) {
     <label
       htmlFor={htmlFor}
       className={clsx(
-        'block text-sm font-medium leading-6 text-gray-900',
+        'block text-sm font-semibold leading-6 text-gray-900',
         className
       )}
     >
