@@ -12,7 +12,7 @@ const nextConfig = {
           },
         ],
         destination: '/',
-        permanent: true,
+        permanent: false,
       },
       {
         source: '/(signup)?',
@@ -24,7 +24,7 @@ const nextConfig = {
           },
         ],
         destination: '/dashboard',
-        permanent: true,
+        permanent: false,
       },
     ]
   },
