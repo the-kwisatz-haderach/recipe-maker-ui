@@ -1,0 +1,29 @@
+.gridContainer {
+  @apply border border-solid border-slate-200;
+  display: grid;
+  height: 100%;
+  width: 100%;
+  grid-template-areas:
+    'head head'
+    'nav  main'
+    'nav  main';
+  grid-template-columns: 240px 1fr;
+  grid-template-rows: auto 1fr;
+  align-items: stretch;
+}
+
+.gridHead {
+  grid-area: head;
+}
+
+.gridNav {
+  @apply bg-slate-200;
+  grid-area: nav;
+  & > ul {
+    @apply flex flex-col gap-2;
+  }
+}
+
+.gridMain {
+  grid-area: main;
+}

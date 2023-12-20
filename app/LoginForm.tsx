@@ -25,7 +25,7 @@ export default function LoginForm() {
       }),
     })
     if (res.ok) {
-      replace('/')
+      replace('/dashboard')
     }
   }
 

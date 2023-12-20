@@ -27,7 +27,7 @@ export default function SignupForm() {
       }),
     })
     if (res.ok) {
-      replace('/login')
+      replace('/')
     }
   }
 
@@ -74,7 +74,7 @@ export default function SignupForm() {
         </form>
 
         <p className="mt-10 text-center text-sm text-gray-500">
-          Already have an account? <Link href="/login">Login here</Link>
+          Already have an account? <Link href="/">Login here</Link>
         </p>
       </div>
     </>

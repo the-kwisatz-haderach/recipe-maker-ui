@@ -7,11 +7,9 @@
 }
 
 html {
-  @apply h-full bg-white;
-  width: 100%;
+  @apply h-full w-full bg-neutral-50;
 }
 
 body {
-  @apply h-full bg-neutral-100 p-2;
-  width: 100%;
+  @apply m-auto h-full w-full max-w-7xl bg-neutral-100;
 }

@@ -1,16 +1,12 @@
-import { getIngredients } from '@/lib/api/getIngredients'
-import Link from '@/components/Link/Link'
+import Container from '@/components/Container/Container'
+import LoginForm from './LoginForm'
 
 export default async function Home() {
-  const ingredients = await getIngredients()
   return (
-    <div>
-      <nav className="flex">
-        <Link href="/api/logout">Log out</Link>
-      </nav>
-      {ingredients.map((ingredient: any) => (
-        <p key={ingredient.id}>{ingredient.name}</p>
-      ))}
+    <div className="flex h-full items-center justify-center">
+      <Container className="flex w-full max-w-lg flex-col justify-center px-6 py-12">
+        <LoginForm />
+      </Container>
     </div>
   )
 }
