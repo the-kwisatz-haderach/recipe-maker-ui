@@ -1,13 +1,13 @@
-import { NextRequest } from 'next/server'
 import { getConfig } from '@/lib/config'
 
 const { apiBasePath } = getConfig()
 
-export async function POST(req: NextRequest) {
+export async function POST(req: Request) {
   try {
+    const body = await req.json()
     const res = await fetch(`${apiBasePath}/login`, {
       method: 'POST',
-      body: JSON.stringify(req.body),
+      body: JSON.stringify(body),
       headers: {
         'Content-Type': 'application/json',
       },

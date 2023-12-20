@@ -4,9 +4,10 @@ const { apiBasePath } = getConfig()
 
 export async function POST(req: Request) {
   try {
+    const body = await req.json()
     const res = await fetch(`${apiBasePath}/signup`, {
+      body: JSON.stringify(body),
       method: 'POST',
-      body: JSON.stringify(req.body),
       headers: {
         'Content-Type': 'application/json',
       },
