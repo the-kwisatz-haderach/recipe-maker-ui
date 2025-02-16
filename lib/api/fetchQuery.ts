@@ -14,7 +14,7 @@ export const fetchQuery = async <T>(query: string): Promise<T | null> => {
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
-      Cookie: cookies().toString(),
+      Cookie: (await cookies()).toString(),
     },
     body: JSON.stringify({ query }),
   })

@@ -12,7 +12,7 @@ export const getIngredients = async (): Promise<Ingredient[]> => {
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
-      Cookie: cookies().toString(),
+      Cookie: (await cookies()).toString(),
     },
     body: JSON.stringify({ query }),
   })
