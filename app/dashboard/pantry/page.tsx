@@ -1,13 +1,10 @@
-import React, { PropsWithChildren } from 'react'
+import React from 'react'
 import Heading from '@/components/Heading/Heading'
 
-type Props = PropsWithChildren<{}>
-
-export default function Page({ children }: Props) {
+export default function Page() {
   return (
     <div>
       <Heading tag="h2">Pantry</Heading>
-      <div>{children}</div>
     </div>
   )
 }

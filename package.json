@@ -8,16 +8,20 @@
     "start:standalone": "node .next/standalone/server.js",
     "start": "next start",
     "lint": "next lint",
-    "lint:fix": "next lint --fix"
+    "lint:fix": "next lint --fix",
+    "codegen": "graphql-codegen --config codegen.ts",
+    "fetch-gql": ""
   },
   "dependencies": {
     "clsx": "^2.0.0",
+    "graphql": "^16.8.1",
     "next": "^14.0.4",
     "react": "^18",
     "react-dom": "^18",
     "sass": "^1.69.5"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "5.0.0",
     "@tailwindcss/forms": "^0.5.7",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@types/node": "^20",
@@ -33,6 +37,7 @@
     "prettier-plugin-tailwindcss": "^0.5.9",
     "server-only": "^0.0.1",
     "tailwindcss": "^3.3.6",
-    "typescript": "^5"
+    "typescript": "^5",
+    "@graphql-codegen/client-preset": "4.1.0"
   }
 }

@@ -1,12 +1,14 @@
 import { cookies } from 'next/headers'
 import 'server-only'
 import { getConfig } from '../config'
-import { Ingredient } from './generated/graphql'
-import { IngredientsQuery as query } from './operations'
 
 const { apiBasePath } = getConfig()
 
-export const getIngredients = async (): Promise<Ingredient[]> => {
+const waitFor = (duration = 0) =>
+  new Promise((resolve) => setTimeout(resolve, duration))
+
+export const fetchQuery = async <T>(query: string): Promise<T | null> => {
+  await waitFor(3000)
   const res = await fetch(`${apiBasePath}/query`, {
     method: 'POST',
     headers: {
@@ -17,8 +19,8 @@ export const getIngredients = async (): Promise<Ingredient[]> => {
     body: JSON.stringify({ query }),
   })
   if (!res.ok) {
-    return []
+    return null
   }
-  const json = await res.json()
-  return json.data?.ingredients || []
+  const { data } = await res.json()
+  return data
 }

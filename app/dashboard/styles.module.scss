@@ -25,5 +25,6 @@
 }
 
 .gridMain {
+  @apply p-8;
   grid-area: main;
 }
