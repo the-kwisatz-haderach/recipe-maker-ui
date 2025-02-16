@@ -1,0 +1,70 @@
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+directive @auth on FIELD_DEFINITION
+
+input AddIngredientInput {
+  name: String!
+}
+
+input AddPantryItemInput {
+  ingredientId: ID!
+  quantity: Int
+}
+
+input AddRecipeInput {
+  name: String!
+}
+
+type Ingredient {
+  id: ID!
+  name: String!
+}
+
+type Mutation {
+  addIngredient(input: AddIngredientInput!): Ingredient! @auth
+  addPantryItem(input: AddPantryItemInput!): PantryItem! @auth
+  addRecipe(input: AddRecipeInput!): Recipe! @auth
+  updatePantryItem(input: UpdatePantryItemInput!): PantryItem! @auth
+  updateRecipe(input: UpdateRecipeInput!): Recipe! @auth
+}
+
+type PantryItem {
+  id: ID!
+  name: String!
+  quantity: Int!
+  unit: String!
+}
+
+type Query {
+  ingredient(id: ID!): Ingredient! @auth
+  ingredients: [Ingredient!]! @auth
+  pantryItem(id: ID!): PantryItem! @auth
+  pantryItems: [PantryItem!]! @auth
+  recipe(id: ID!): Recipe! @auth
+  recipes: [Recipe!]! @auth
+}
+
+type Recipe {
+  id: ID!
+  name: String!
+}
+
+type RecipeRole {
+  id: ID!
+  recipeId: ID!
+  relation: String!
+  userId: ID!
+}
+
+input UpdatePantryItemInput {
+  id: ID!
+  quantity: Int
+}
+
+input UpdateRecipeInput {
+  id: ID!
+  name: String!
+}

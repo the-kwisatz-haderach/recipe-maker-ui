@@ -1,11 +1,19 @@
 import React from 'react'
-import { fetchQuery } from '@/lib/api/fetchQuery'
-import { Ingredient } from '@/lib/api/generated/graphql'
-import { IngredientsQuery } from '@/lib/api/operations'
+import { graphql } from '@/lib/api/graphql'
+import { execute } from '@/lib/api/graphql/execute'
 import Heading from '@/components/Heading/Heading'
 
+const ingredientsQuery = graphql(`
+  query Ingredients {
+    ingredients {
+      id
+      name
+    }
+  }
+`)
+
 export default async function Page() {
-  const data = await fetchQuery<{ ingredients: Ingredient[] }>(IngredientsQuery)
+  const data = await execute(ingredientsQuery)
   return (
     <div>
       <Heading tag="h2">Ingredients</Heading>

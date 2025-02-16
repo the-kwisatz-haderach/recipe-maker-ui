@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
+import { DocumentTypeDecoration } from '@graphql-typed-document-node/core';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -129,7 +129,56 @@ export type UpdateRecipeInput = {
 export type IngredientsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type IngredientsQuery = { __typename?: 'Query', ingredients: Array<{ __typename?: 'Ingredient', name: string, id: string }> };
+export type IngredientsQuery = { __typename?: 'Query', ingredients: Array<{ __typename?: 'Ingredient', id: string, name: string }> };
+
+export type RecipesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export const IngredientsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Ingredients"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"ingredients"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]} as unknown as DocumentNode<IngredientsQuery, IngredientsQueryVariables>;
+export type RecipesQuery = { __typename?: 'Query', recipes: Array<{ __typename?: 'Recipe', id: string, name: string }> };
+
+export type PantryItemsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type PantryItemsQuery = { __typename?: 'Query', pantryItems: Array<{ __typename?: 'PantryItem', id: string, name: string, quantity: number, unit: string }> };
+
+export class TypedDocumentString<TResult, TVariables>
+  extends String
+  implements DocumentTypeDecoration<TResult, TVariables>
+{
+  __apiType?: DocumentTypeDecoration<TResult, TVariables>['__apiType'];
+
+  constructor(private value: string, public __meta__?: Record<string, any> | undefined) {
+    super(value);
+  }
+
+  toString(): string & DocumentTypeDecoration<TResult, TVariables> {
+    return this.value;
+  }
+}
+
+export const IngredientsDocument = new TypedDocumentString(`
+    query Ingredients {
+  ingredients {
+    id
+    name
+  }
+}
+    `) as unknown as TypedDocumentString<IngredientsQuery, IngredientsQueryVariables>;
+export const RecipesDocument = new TypedDocumentString(`
+    query Recipes {
+  recipes {
+    id
+    name
+  }
+}
+    `) as unknown as TypedDocumentString<RecipesQuery, RecipesQueryVariables>;
+export const PantryItemsDocument = new TypedDocumentString(`
+    query PantryItems {
+  pantryItems {
+    id
+    name
+    quantity
+    unit
+  }
+}
+    `) as unknown as TypedDocumentString<PantryItemsQuery, PantryItemsQueryVariables>;

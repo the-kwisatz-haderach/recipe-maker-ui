@@ -1,7 +1,12 @@
+import { server } from '@/mocks/node'
 import clsx from 'clsx'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+
+if (process.env.NODE_ENV === 'development') {
+  server.listen()
+}
 
 const inter = Inter({ subsets: ['latin'] })
 

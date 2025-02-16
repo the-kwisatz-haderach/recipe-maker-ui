@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+const config = {
   output: 'standalone',
   async redirects() {
     return [
@@ -30,4 +30,4 @@ const nextConfig = {
   },
 }
 
-module.exports = nextConfig
+export default config

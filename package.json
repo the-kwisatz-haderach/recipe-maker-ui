@@ -9,9 +9,11 @@
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
-    "codegen": "graphql-codegen --config codegen.ts",
-    "fetch-gql": "",
-    "prepare": "ts-patch install && typia patch"
+    "gql:watch": "graphql-codegen --config codegen.ts --watch",
+    "gql:generate": "graphql-codegen --config codegen.ts",
+    "typia:generate": "npx typia generate --input lib/api/templates --output lib/api/generated --project tsconfig.json",
+    "prepare": "ts-patch install && typia patch",
+    "tsc": "tsc"
   },
   "dependencies": {
     "clsx": "^2.0.0",
@@ -47,5 +49,10 @@
   "overrides": {
     "@types/react": "19.0.8",
     "@types/react-dom": "19.0.3"
+  },
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
   }
 }
