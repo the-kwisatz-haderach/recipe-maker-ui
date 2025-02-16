@@ -10,7 +10,8 @@
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "codegen": "graphql-codegen --config codegen.ts",
-    "fetch-gql": ""
+    "fetch-gql": "",
+    "prepare": "ts-patch install && typia patch"
   },
   "dependencies": {
     "clsx": "^2.0.0",
@@ -18,10 +19,12 @@
     "next": "15.1.7",
     "react": "19.0.0",
     "react-dom": "19.0.0",
-    "sass": "^1.69.5"
+    "sass": "^1.69.5",
+    "typia": "^7.6.4"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "5.0.0",
+    "@graphql-codegen/client-preset": "4.1.0",
     "@tailwindcss/forms": "^0.5.7",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@types/node": "^20",
@@ -32,13 +35,14 @@
     "eslint": "^8",
     "eslint-config-next": "15.1.7",
     "eslint-plugin-tailwindcss": "^3.13.0",
+    "msw": "^2.7.0",
     "postcss": "^8.4.32",
     "prettier": "^3.1.1",
     "prettier-plugin-tailwindcss": "^0.5.9",
     "server-only": "^0.0.1",
     "tailwindcss": "^3.3.6",
-    "typescript": "^5",
-    "@graphql-codegen/client-preset": "4.1.0"
+    "ts-patch": "^3.3.0",
+    "typescript": "~5.7.3"
   },
   "overrides": {
     "@types/react": "19.0.8",
